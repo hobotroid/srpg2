@@ -37,8 +37,8 @@ public class Main extends Game
         //camera
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, (w / h) * 10, 10);
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.zoom = 1;
         camera.update();
         cameraController = new OrthoCamController(camera);
@@ -49,7 +49,7 @@ public class Main extends Game
         batch = new SpriteBatch();
 
         //load map
-        float unitScale = 1 / 24f;
+        float unitScale = 1 / 2f;
         TiledMap map = assetManager.get("maps/plane/plane.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map, unitScale);
     }
