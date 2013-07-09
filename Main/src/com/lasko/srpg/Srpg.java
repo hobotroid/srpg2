@@ -3,10 +3,10 @@ package com.lasko.srpg;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -14,32 +14,32 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.lasko.srpg.map.MapRenderer;
 import com.lasko.srpg.map.Map;
 
-import java.net.URL;
-
 public class Srpg extends Game
 {
     public static final String LOG = "Debug";
 
     OrthographicCamera camera;
-    AssetManager assetManager;
+    Assets assetManager;
     MapRenderer mapRenderer;
     BitmapFont font;
     SpriteBatch batch;
+    MapActor player;
 
     @Override
     public void create()
     {
         //asset manager
-        assetManager = new AssetManager();
+        assetManager = new Assets();
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
         assetManager.load("maps/plane/plane.tmx", TiledMap.class);
+        assetManager.load("characters/carl.png", Texture.class);
         assetManager.finishLoading();
 
         //camera
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.setToOrtho(false, w / 24 / 2, h / 24 / 2);
+        camera.setToOrtho(false, w / 24 / 2, h / 24 / 2); // how many units (tiles) on the screen at any given timex
         camera.update();
 
         //font & sprites?
@@ -47,9 +47,10 @@ public class Srpg extends Game
         batch = new SpriteBatch();
 
         //load map
-        Map map = new Map((TiledMap)assetManager.get("maps/plane/plane.tmx"));
+        //Map map = new Map((TiledMap)assetManager.get("maps/plane/plane.tmx"));
+        Map map = assetManager.getMap("maps/plane/plane.tmx");
+        player = map.getPlayer();
         mapRenderer = new MapRenderer(map, camera);
-        //camera.translate(0, map.getHeightInTiles());
         camera.position.set(map.getWidthInTiles() / 2, map.getHeightInTiles() / 2, 0);
         Gdx.app.log(Srpg.LOG, "Map size: " + map.getWidthInTiles() + "x" + map.getHeightInTiles());
     }
@@ -92,6 +93,22 @@ public class Srpg extends Game
 
         if(Gdx.input.isKeyPressed(Keys.UP)) {
             camera.position.y += scrollSpeed;
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.W)) {
+            player.moveUp();
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.S)) {
+            player.moveDown();
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.A)) {
+            player.moveLeft();
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.D)) {
+            player.moveRight();
         }
 
     }

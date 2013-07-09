@@ -12,7 +12,7 @@ public class DesktopStarter
         cfg.useGL20 = true;
         cfg.width = 1024;
         cfg.height = 768;
-        cfg.vSyncEnabled = false;
+        cfg.vSyncEnabled = true;
         new LwjglApplication(new Srpg(), cfg);
     }
 }
