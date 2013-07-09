@@ -11,17 +11,18 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.lasko.utils.OrthoCamController;
+import com.lasko.srpg.map.MapRenderer;
+import com.lasko.srpg.map.Map;
 
 import java.net.URL;
 
-public class Main extends Game
+public class Srpg extends Game
 {
+    public static final String LOG = "Debug";
+
     OrthographicCamera camera;
-    OrthoCamController cameraController;
     AssetManager assetManager;
-    OrthogonalTiledMapRenderer mapRenderer;
+    MapRenderer mapRenderer;
     BitmapFont font;
     SpriteBatch batch;
 
@@ -38,20 +39,19 @@ public class Main extends Game
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 1;
+        camera.setToOrtho(false, w / 24 / 2, h / 24 / 2);
         camera.update();
-        cameraController = new OrthoCamController(camera);
-        Gdx.input.setInputProcessor(cameraController);
 
         //font & sprites?
         font = new BitmapFont();
         batch = new SpriteBatch();
 
         //load map
-        float unitScale = 1 / 2f;
-        TiledMap map = assetManager.get("maps/plane/plane.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map, unitScale);
+        Map map = new Map((TiledMap)assetManager.get("maps/plane/plane.tmx"));
+        mapRenderer = new MapRenderer(map, camera);
+        //camera.translate(0, map.getHeightInTiles());
+        camera.position.set(map.getWidthInTiles() / 2, map.getHeightInTiles() / 2, 0);
+        Gdx.app.log(Srpg.LOG, "Map size: " + map.getWidthInTiles() + "x" + map.getHeightInTiles());
     }
 
     @Override
@@ -61,33 +61,39 @@ public class Main extends Game
 
         Gdx.gl.glClearColor(100f / 255f, 100f / 255f, 250f / 255f, 1f);
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        camera.update();
 
-        mapRenderer.setView(camera);
         mapRenderer.render();
 
         batch.begin();
-        font.draw(batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
+        font.draw(
+            batch,
+            "FPS: " + Gdx.graphics.getFramesPerSecond() +
+            "    Camera: " + camera.position.x + "x" + camera.position.y,
+            10, 20
+        );
         batch.end();
     }
 
     private void getInput()
     {
+        float scrollSpeed = .1f;
+
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            camera.position.x++;
+            camera.position.x += scrollSpeed;
         }
 
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            camera.position.x--;
+            camera.position.x -= scrollSpeed;
         }
 
         if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-            camera.position.y--;
+            camera.position.y -= scrollSpeed;
         }
 
         if(Gdx.input.isKeyPressed(Keys.UP)) {
-            camera.position.y++;
+            camera.position.y += scrollSpeed;
         }
+
     }
 
     @Override

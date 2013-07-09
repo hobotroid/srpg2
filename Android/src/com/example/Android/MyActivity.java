@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.lasko.srpg.Main;
+import com.lasko.srpg.Srpg;
 
 public class MyActivity extends AndroidApplication
 {
@@ -17,6 +17,6 @@ public class MyActivity extends AndroidApplication
         cfg.useCompass = false;
         cfg.useWakelock = true;
         cfg.useGL20 = true;
-        initialize(new Main(), cfg);
+        initialize(new Srpg(), cfg);
     }
 }
