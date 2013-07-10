@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3f32fce-bfe4-449f-a371-c7056a063641" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Main/src/com/lasko/srpg/Assets.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Main/src/com/lasko/srpg/MapActor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Main/src/com/lasko/srpg/models/RpgCharacter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Desktop/src/com/lasko/srpg/DesktopStarter.java" afterPath="$PROJECT_DIR$/Desktop/src/com/lasko/srpg/DesktopStarter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/src/com/lasko/srpg/map/Map.java" afterPath="$PROJECT_DIR$/Main/src/com/lasko/srpg/map/Map.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/src/com/lasko/srpg/map/MapRenderer.java" afterPath="$PROJECT_DIR$/Main/src/com/lasko/srpg/map/MapRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/src/com/lasko/srpg/Srpg.java" afterPath="$PROJECT_DIR$/Main/src/com/lasko/srpg/Srpg.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/assets/maps/plane/plane.tmx" afterPath="$PROJECT_DIR$/Android/assets/maps/plane/plane.tmx" />
@@ -14,7 +9,7 @@
     </list>
     <ignored path="srpg.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373379801640" ignored="false" />
+    <file path="/Dummy.txt" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373413886980" ignored="false" />
     <file path="$PROJECT_DIR$/Android/res/values/strings.xml" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1372704069761" ignored="false" />
     <file path="$PROJECT_DIR$/Android/res/layout/main.xml" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1372704069761" ignored="false" />
     <file path="/Game.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1372704675863" ignored="false" />
@@ -23,11 +18,11 @@
     <file path="/a.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373393773501" ignored="false" />
     <file path="/sample.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373303163658" ignored="false" />
     <file path="/MyActivity.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1372704934369" ignored="false" />
-    <file path="/fragment.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1372713278073" ignored="false" />
+    <file path="/fragment.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373422531820" ignored="false" />
     <file path="/Main.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373293005606" ignored="false" />
     <file path="/OrthoCamController.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1372714071151" ignored="false" />
-    <file path="/Srpg.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373402889521" ignored="false" />
-    <file path="/MapRenderer.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373409765638" ignored="false" />
+    <file path="/Srpg.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373416581721" ignored="false" />
+    <file path="/MapRenderer.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373421223559" ignored="false" />
     <file path="/Map.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373404777730" ignored="false" />
     <file path="/Assets.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373398954609" ignored="false" />
     <file path="/Actor.java" changelist="b3f32fce-bfe4-449f-a371-c7056a063641" time="1373394289308" ignored="false" />
@@ -47,7 +42,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -84,6 +78,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -96,10 +91,8 @@
       <file leaf-file-name="Srpg.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/Srpg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="8" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="74" column="53" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,9 +101,7 @@
         <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/Assets.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="39" column="33" selection-start="1148" selection-end="1148" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,9 +119,7 @@
         <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/MapActor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="49" column="37" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,11 +127,8 @@
       <file leaf-file-name="Map.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/map/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="48" selection-start="2754" selection-end="2754" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#863#873#0" expanded="true" />
-              </folding>
+            <state line="117" column="48" selection-start="4271" selection-end="4271" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -150,10 +136,8 @@
       <file leaf-file-name="MapRenderer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/map/MapRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="20" selection-start="1657" selection-end="1657" vertical-scroll-proportion="0.3197279">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="46" column="129" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.93679094">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -161,7 +145,7 @@
       <file leaf-file-name="plane.tmx" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Android/assets/maps/plane/plane.tmx">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="17" selection-start="872" selection-end="872" vertical-scroll-proportion="0.0">
+            <state line="16" column="17" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -197,18 +181,17 @@
         <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/models/Character.java" />
         <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/Assets.java" />
         <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/models/RpgCharacter.java" />
-        <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/Srpg.java" />
         <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/MapActor.java" />
         <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/map/Map.java" />
+        <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/Srpg.java" />
         <option value="$PROJECT_DIR$/Main/src/com/lasko/srpg/map/MapRenderer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="8" />
-    <option name="y" value="22" />
-    <option name="width" value="1420" />
-    <option name="height" value="860" />
+    <option name="x" value="1" />
+    <option name="width" value="1925" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -236,6 +219,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -520,8 +505,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -538,12 +521,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.Desktop">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -558,19 +541,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -598,6 +568,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -726,8 +709,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="8" y="22" width="1420" height="860" extended-state="0" />
-    <editor active="true" />
+    <frame x="1" y="0" width="1925" height="1038" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -737,14 +720,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32837838" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22707424" sideWeight="0.65135133" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34864864" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1164788" sideWeight="0.72985244" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27014756" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -817,6 +800,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Android/assets/maps/plane/plane.tmx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="17" selection-start="872" selection-end="872" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Android/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="12" selection-start="2019" selection-end="2022" vertical-scroll-proportion="0.33333334">
@@ -862,21 +852,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Android/assets/characters/carl.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/Desktop/libs/gdx-backend-lwjgl.jar!/com/badlogic/gdx/backends/lwjgl/LwjglApplication.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="810" selection-end="819" vertical-scroll-proportion="0.5952381">
-          <folding />
-        </state>
+        <state line="16" column="13" selection-start="810" selection-end="819" vertical-scroll-proportion="0.5952381" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Android/assets/maps/plane/plane.tmx">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="17" selection-start="872" selection-end="872" vertical-scroll-proportion="0.0">
+        <state line="16" column="17" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -884,28 +867,14 @@
     <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/MapActor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="37" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/Assets.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="33" selection-start="1148" selection-end="1148" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/map/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="48" selection-start="2754" selection-end="2754" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#863#873#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -918,19 +887,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/Srpg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="8" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="74" column="53" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/map/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="48" selection-start="4271" selection-end="4271" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/src/com/lasko/srpg/map/MapRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="20" selection-start="1657" selection-end="1657" vertical-scroll-proportion="0.3197279">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="46" column="129" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.93679094">
+          <folding />
         </state>
       </provider>
     </entry>

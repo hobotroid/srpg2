@@ -69,7 +69,8 @@ public class Srpg extends Game
         font.draw(
             batch,
             "FPS: " + Gdx.graphics.getFramesPerSecond() +
-            "    Camera: " + camera.position.x + "x" + camera.position.y,
+            "    Camera: " + camera.position.x + "x" + camera.position.y +
+            "    Player: " + player.getMapPosition(),
             10, 20
         );
         batch.end();

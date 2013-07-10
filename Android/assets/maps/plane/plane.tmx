@@ -100,6 +100,7 @@
   <object gid="466" x="552" y="408"/>
   <object gid="466" x="552" y="456"/>
   <object name="player" type="actor" x="624" y="216" width="48" height="48"/>
+  <object gid="466" x="552" y="336"/>
  </objectgroup>
  <layer name="Above" width="60" height="40">
   <data encoding="csv">
