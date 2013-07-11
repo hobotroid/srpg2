@@ -44,13 +44,13 @@ public class MapRenderer implements ApplicationListener
 
         SpriteBatch batch = renderer.getSpriteBatch();
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) map.getLayers().get("PlayerFinal");
-        ArrayList<MapActor> actors = new ArrayList(Arrays.asList(map.getActors().toArray(new MapActor[map.getActors().size()])));
+        ArrayList<MapActor> actors = (ArrayList<MapActor>)map.getActors().clone();
         int indexToRemove = -1;
         MapActor actorToDraw = null;
 
+        //manually draw actors and objects so that they overlap correctly
         batch.begin();
         for(int y = map.getHeightInTiles() - 1; y >= 0; y--) {
-
             for(int i = 0; i < actors.size(); i++) {
                 MapActor actor = actors.get(i);
                 if((int)actor.getMapPosition().y == y) {

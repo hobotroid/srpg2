@@ -1,10 +1,12 @@
 package com.lasko.srpg;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.lasko.srpg.map.Map;
 
 import java.util.Iterator;
@@ -17,6 +19,12 @@ public class Assets extends AssetManager
     {
         super();
         Assets.instance = this;
+
+        setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+        load("maps/plane/plane.tmx", TiledMap.class);
+        load("characters/carl.png", Texture.class);
+        load("characters/citizen.png", Texture.class);
+        finishLoading();
     }
 
     public Map getMap(String filename)

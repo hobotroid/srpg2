@@ -24,16 +24,13 @@ public class Srpg extends Game
     BitmapFont font;
     SpriteBatch batch;
     MapActor player;
+    Map currentMap;
 
     @Override
     public void create()
     {
         //asset manager
         assetManager = new Assets();
-        assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
-        assetManager.load("maps/plane/plane.tmx", TiledMap.class);
-        assetManager.load("characters/carl.png", Texture.class);
-        assetManager.finishLoading();
 
         //camera
         float w = Gdx.graphics.getWidth();
@@ -48,11 +45,11 @@ public class Srpg extends Game
 
         //load map
         //Map map = new Map((TiledMap)assetManager.get("maps/plane/plane.tmx"));
-        Map map = assetManager.getMap("maps/plane/plane.tmx");
-        player = map.getPlayer();
-        mapRenderer = new MapRenderer(map, camera);
-        camera.position.set(map.getWidthInTiles() / 2, map.getHeightInTiles() / 2, 0);
-        Gdx.app.log(Srpg.LOG, "Map size: " + map.getWidthInTiles() + "x" + map.getHeightInTiles());
+        currentMap = assetManager.getMap("maps/plane/plane.tmx");
+        player = currentMap.getPlayer();
+        mapRenderer = new MapRenderer(currentMap, camera);
+        camera.position.set(currentMap.getWidthInTiles() / 2, currentMap.getHeightInTiles() / 2, 0);
+        Gdx.app.log(Srpg.LOG, "Map size: " + currentMap.getWidthInTiles() + "x" + currentMap.getHeightInTiles());
     }
 
     @Override
@@ -110,6 +107,22 @@ public class Srpg extends Game
 
         if(Gdx.input.isKeyPressed(Keys.D)) {
             player.moveRight();
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.I)) {
+            currentMap.getActor("citizen").moveUp();
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.K)) {
+            currentMap.getActor("citizen").moveDown();
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.J)) {
+            currentMap.getActor("citizen").moveLeft();
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.L)) {
+            currentMap.getActor("citizen").moveRight();
         }
 
     }

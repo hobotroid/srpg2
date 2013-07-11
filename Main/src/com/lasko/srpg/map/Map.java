@@ -8,11 +8,15 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Pool;
+import com.badlogic.gdx.math.Rectangle;
 import com.lasko.srpg.Assets;
 import com.lasko.srpg.MapActor;
 import com.lasko.srpg.Srpg;
 import com.lasko.srpg.models.RpgCharacter;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -32,6 +36,14 @@ public class Map extends TiledMap
     public int[] layersPlayer = {};
     public int[] layersAbove = {};
     public int[] layersBelow = {};
+    public int[] layersCollision = {};
+
+    private Pool<Rectangle> rectPool = new Pool<Rectangle>() {
+        @Override
+        protected Rectangle newObject () {
+            return new Rectangle();
+        }
+    };
 
     public void init()
     {
@@ -65,12 +77,17 @@ public class Map extends TiledMap
                 cell.setTile(objectTile);
                 playerLayer.setCell(x, y, cell);
             } else if(type.equals("actor")) {
-                String name = "carl";
+                String name = object.getName().toLowerCase();
+                if(name.equals("player")) {
+                    name = "carl";
+                }
                 RpgCharacter character = new RpgCharacter(name);
                 MapActor actor = new MapActor(character, Assets.get().getCharacter(name));
                 actor.setMapPosition(x, y);
                 addActor(actor);
-                player = actor;
+                if(name.equals("carl")) {
+                    player = actor;
+                }
                 Gdx.app.log(Srpg.LOG, "Added actor " + name + " @ " + x + "x" + y);
             }
 
@@ -90,20 +107,53 @@ public class Map extends TiledMap
                 layersAbove = addElement(layersAbove, index);
             } else {
                 layersBelow = addElement(layersBelow, index);
+                if(layerName.equals("collision")) {
+                    layersCollision = addElement(layersCollision, index);
+                }
             }
 
             index++;
         }
     }
 
+    public void getCollisionTiles(int startX, int startY, int endX, int endY, Array<Rectangle> tiles)
+    {
+        TiledMapTileLayer layer = (TiledMapTileLayer)getLayers().get(layersCollision[0]);
+
+        rectPool.freeAll(tiles);
+        tiles.clear();
+        for(int y = startY; y <= endY; y++) {
+            for(int x = startX; x <= endX; x++) {
+                TiledMapTileLayer.Cell cell = layer.getCell(x, y);
+                if(cell != null) {
+                    Rectangle rect = rectPool.obtain();
+                    rect.set(x, y, 1, 1);
+                    tiles.add(rect);
+                }
+            }
+        }
+    }
+
     public void addActor(MapActor actor)
     {
+        actor.setMap(this);
         actors.add(actor);
     }
 
     public ArrayList<MapActor> getActors()
     {
         return actors;
+    }
+
+    public MapActor getActor(String name)
+    {
+        for(MapActor actor : actors) {
+            if(actor.getCharacter().getName().equals(name)) {
+                return actor;
+            }
+        }
+
+        return null;
     }
 
     public MapActor getPlayer()
