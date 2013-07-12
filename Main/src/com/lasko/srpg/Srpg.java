@@ -64,6 +64,7 @@ public class Srpg extends Game
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
         mapRenderer.render();
+        camera.position.set(player.getX(), player.getY(), 0);
 
         batch.begin();
         font.draw(

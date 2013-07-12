@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.math.Rectangle;
@@ -58,8 +59,6 @@ public class Map extends TiledMap
 
         //make object layers
         MapLayer playerObjectLayer = getLayers().get("Player");
-        TiledMapTileLayer playerLayer = new TiledMapTileLayer(getWidthInTiles(), getHeightInTiles(), (int)getTileWidth(), (int)getTileHeight());
-        playerLayer.setName("PlayerFinal");
         MapObjects objects = playerObjectLayer.getObjects();
         Iterator<MapObject> objectIterator = objects.iterator();
         while(objectIterator.hasNext()) {
@@ -70,12 +69,16 @@ public class Map extends TiledMap
             String type = props.containsKey("type") ? props.get("type").toString().toLowerCase() : "object";
             int x = Integer.parseInt(props.get("x").toString()) / 24;
             int y = Integer.parseInt(props.get("y").toString()) / 24;
+
+            //generic object
             if(type.equals("object")) {
                 int gid = Integer.parseInt(props.get("gid").toString());
                 TiledMapTile objectTile = getTileSets().getTile(gid);
-                TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
-                cell.setTile(objectTile);
-                playerLayer.setCell(x, y, cell);
+                MapActor objectActor = new MapActor(objectTile.getTextureRegion());
+                objectActor.setPosition(x, y);
+                addActor(objectActor);
+
+            //actor (character)
             } else if(type.equals("actor")) {
                 String name = object.getName().toLowerCase();
                 if(name.equals("player")) {
@@ -92,7 +95,6 @@ public class Map extends TiledMap
             }
 
         }
-        getLayers().add(playerLayer);
 
         //figure out which layers are which
         Iterator<MapLayer> layerIterator = getLayers().iterator();
@@ -124,7 +126,7 @@ public class Map extends TiledMap
         tiles.clear();
         for(int y = startY; y <= endY; y++) {
             for(int x = startX; x <= endX; x++) {
-                TiledMapTileLayer.Cell cell = layer.getCell(x, y);
+                Cell cell = layer.getCell(x, y);
                 if(cell != null) {
                     Rectangle rect = rectPool.obtain();
                     rect.set(x, y, 1, 1);
@@ -148,7 +150,7 @@ public class Map extends TiledMap
     public MapActor getActor(String name)
     {
         for(MapActor actor : actors) {
-            if(actor.getCharacter().getName().equals(name)) {
+            if(actor.getCharacterName().equals(name)) {
                 return actor;
             }
         }

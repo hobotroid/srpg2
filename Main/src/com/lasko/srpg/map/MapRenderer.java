@@ -1,6 +1,7 @@
 package com.lasko.srpg.map;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -10,17 +11,16 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.lasko.srpg.MapActor;
+import com.lasko.srpg.Srpg;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class MapRenderer implements ApplicationListener
 {
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
     private Map map;
+    private Srpg game;
 
     private ShapeRenderer shapeRenderer;
 
@@ -32,6 +32,7 @@ public class MapRenderer implements ApplicationListener
         this.camera = camera;
         this.map = map;
         this.shapeRenderer = new ShapeRenderer();
+        this.game = (Srpg)Gdx.app.getApplicationListener();
     }
 
     @Override
@@ -46,38 +47,24 @@ public class MapRenderer implements ApplicationListener
         camera.update();
         renderer.setView(camera);
 
+        //1. render tiles below actors
         renderer.render(map.layersBelow);
 
+        //2. render actors, making sure to sort based on y position so they overlap correctly
         SpriteBatch batch = renderer.getSpriteBatch();
-        TiledMapTileLayer playerLayer = (TiledMapTileLayer) map.getLayers().get("PlayerFinal");
-        ArrayList<MapActor> actors = (ArrayList<MapActor>)map.getActors().clone();
-        int indexToRemove = -1;
-        MapActor actorToDraw = null;
-
-        //manually draw actors and objects so that they overlap correctly
+        Comparator<MapActor> comparator = new Comparator<MapActor>() {
+            public int compare(MapActor c1, MapActor c2) {
+                return c2.getY() > c1.getY() ? 1 : -1;
+            }
+        };
+        Collections.sort(map.getActors(), comparator);
         batch.begin();
-        for(int y = map.getHeightInTiles() - 1; y >= 0; y--) { //TODO: only draw tiles in view
-            for(int i = 0; i < actors.size(); i++) {
-                MapActor actor = actors.get(i);
-                if((int)actor.getY() == y) {
-                    actor.draw(batch);
-                    indexToRemove = i;
-                }
-            }
-            if(indexToRemove > -1) {
-                actors.remove(indexToRemove);
-                indexToRemove = -1;
-            }
-
-            for(int x = 0; x < map.getWidthInTiles(); x++) {
-                TiledMapTileLayer.Cell cell = playerLayer.getCell(x, y);
-                if(cell != null) {
-                    batch.draw(cell.getTile().getTextureRegion(), x, y, 0, 0, 48, 48, renderer.getUnitScale(), renderer.getUnitScale(), 0);
-                }
-            }
+        for(MapActor actor : map.getActors()) {
+            actor.draw(batch);
         }
         batch.end();
 
+        //3. render tile layers above actors
         renderer.render(map.layersAbove);
 
         //debugging stuff
@@ -86,8 +73,10 @@ public class MapRenderer implements ApplicationListener
         shapeRenderer.setColor(255, 0, 0, 1);
         for(MapActor actor : map.getActors()) {
             Rectangle rect = actor.getCollideRect();
-            shapeRenderer.rect(rect.x + actor.getX(), rect.y + actor.getY(), rect.width, rect.height);
+            //shapeRenderer.rect(rect.x, rect.y, rect.width, rect.height);
         }
+        shapeRenderer.setColor(0, 255, 0, .5f);
+        shapeRenderer.rect((int)Srpg.mouseCoordinates.x, (int)Srpg.mouseCoordinates.y, 1, 1);
         shapeRenderer.end();
     }
 
