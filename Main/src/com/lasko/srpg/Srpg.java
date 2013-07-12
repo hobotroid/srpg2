@@ -3,20 +3,20 @@ package com.lasko.srpg;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.math.Vector3;
+import com.lasko.srpg.input.KeyboardInput;
 import com.lasko.srpg.map.MapRenderer;
 import com.lasko.srpg.map.Map;
 
 public class Srpg extends Game
 {
     public static final String LOG = "Debug";
+
+    public static Vector3 mouseCoordinates = new Vector3();
 
     OrthographicCamera camera;
     Assets assetManager;
@@ -50,6 +50,9 @@ public class Srpg extends Game
         mapRenderer = new MapRenderer(currentMap, camera);
         camera.position.set(currentMap.getWidthInTiles() / 2, currentMap.getHeightInTiles() / 2, 0);
         Gdx.app.log(Srpg.LOG, "Map size: " + currentMap.getWidthInTiles() + "x" + currentMap.getHeightInTiles());
+
+        //input
+        Gdx.input.setInputProcessor(new KeyboardInput());
     }
 
     @Override
@@ -67,7 +70,8 @@ public class Srpg extends Game
             batch,
             "FPS: " + Gdx.graphics.getFramesPerSecond() +
             "    Camera: " + camera.position.x + "x" + camera.position.y +
-            "    Player: " + player.getMapPosition(),
+            "    Player: " + player.getX() + "x" + player.getY() +
+            "    Mouse:  " + mouseCoordinates.x + "x" + mouseCoordinates.y,
             10, 20
         );
         batch.end();
@@ -124,7 +128,16 @@ public class Srpg extends Game
         if(Gdx.input.isKeyPressed(Keys.L)) {
             currentMap.getActor("citizen").moveRight();
         }
+    }
 
+    public OrthographicCamera getCamera()
+    {
+        return camera;
+    }
+
+    public Map getCurrentMap()
+    {
+        return currentMap;
     }
 
     @Override

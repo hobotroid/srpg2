@@ -3,10 +3,12 @@ package com.lasko.srpg.map;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.lasko.srpg.MapActor;
 
 import java.util.ArrayList;
@@ -20,12 +22,16 @@ public class MapRenderer implements ApplicationListener
     private OrthographicCamera camera;
     private Map map;
 
+    private ShapeRenderer shapeRenderer;
+
     public MapRenderer(Map map, OrthographicCamera camera)
     {
-        float unitScale = 1 / map.getTileWidth();   //we want 1 unit to equal 1 tile
-        renderer = new OrthogonalTiledMapRenderer(map, unitScale);
+        super();
+
+        renderer = new OrthogonalTiledMapRenderer(map, map.getUnitScale());
         this.camera = camera;
         this.map = map;
+        this.shapeRenderer = new ShapeRenderer();
     }
 
     @Override
@@ -50,11 +56,11 @@ public class MapRenderer implements ApplicationListener
 
         //manually draw actors and objects so that they overlap correctly
         batch.begin();
-        for(int y = map.getHeightInTiles() - 1; y >= 0; y--) {
+        for(int y = map.getHeightInTiles() - 1; y >= 0; y--) { //TODO: only draw tiles in view
             for(int i = 0; i < actors.size(); i++) {
                 MapActor actor = actors.get(i);
-                if((int)actor.getMapPosition().y == y) {
-                    batch.draw(actor.getTexture(), actor.getMapPosition().x, actor.getMapPosition().y, 0, 0, 48, 48, renderer.getUnitScale(), renderer.getUnitScale(), 0, 0, 0, 48, 48, false, false);
+                if((int)actor.getY() == y) {
+                    actor.draw(batch);
                     indexToRemove = i;
                 }
             }
@@ -73,6 +79,16 @@ public class MapRenderer implements ApplicationListener
         batch.end();
 
         renderer.render(map.layersAbove);
+
+        //debugging stuff
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        shapeRenderer.setColor(255, 0, 0, 1);
+        for(MapActor actor : map.getActors()) {
+            Rectangle rect = actor.getCollideRect();
+            shapeRenderer.rect(rect.x + actor.getX(), rect.y + actor.getY(), rect.width, rect.height);
+        }
+        shapeRenderer.end();
     }
 
     @Override

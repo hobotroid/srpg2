@@ -83,7 +83,7 @@ public class Map extends TiledMap
                 }
                 RpgCharacter character = new RpgCharacter(name);
                 MapActor actor = new MapActor(character, Assets.get().getCharacter(name));
-                actor.setMapPosition(x, y);
+                actor.setPosition(x, y);
                 addActor(actor);
                 if(name.equals("carl")) {
                     player = actor;
@@ -171,6 +171,11 @@ public class Map extends TiledMap
         return heightInTiles;
     }
 
+    public float getUnitScale()
+    {
+        return 1 / getTileWidth();   //we want 1 unit to equal 1 tile
+    }
+
     public float getWidthInPixels()
     {
         return widthInPixels;
@@ -194,6 +199,14 @@ public class Map extends TiledMap
     public float getTileWidthLarge()
     {
         return 48f;
+    }
+
+    public void toggleLayer(int layerNum)
+    {
+        MapLayer layer = this.getLayers().get(layerNum);
+        if(layer != null) {
+            layer.setVisible(!layer.isVisible());
+        }
     }
 
     int[] addElement(int[] org, int added) {
