@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.lasko.srpg.assets.Assets;
 import com.lasko.srpg.input.KeyboardInput;
 import com.lasko.srpg.map.MapRenderer;
 import com.lasko.srpg.map.Map;

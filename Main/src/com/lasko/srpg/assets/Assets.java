@@ -1,4 +1,4 @@
-package com.lasko.srpg;
+package com.lasko.srpg.assets;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -7,7 +7,10 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.XmlReader.Element;
 import com.lasko.srpg.map.Map;
+import com.lasko.srpg.models.CharacterDefinition;
 
 import java.util.Iterator;
 
@@ -20,10 +23,14 @@ public class Assets extends AssetManager
         super();
         Assets.instance = this;
 
+        setLoader(Element.class, new XmlLoader(new InternalFileHandleResolver()));
         setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+
         load("maps/plane/plane.tmx", TiledMap.class);
         load("characters/carl.png", Texture.class);
         load("characters/citizen.png", Texture.class);
+        load("characters/characters.xml", Element.class);
+
         finishLoading();
     }
 
@@ -51,10 +58,23 @@ public class Assets extends AssetManager
         return map;
     }
 
-    public Texture getCharacter(String characterName)
+    public Texture getCharacterSheet(String characterName)
     {
         Texture texture = get("characters/" + characterName + ".png", Texture.class);
         return texture;
+    }
+
+    public CharacterDefinition getCharacterDefinition(String characterName)
+    {
+        Element element = get("characters/characters.xml", Element.class);
+        Array<Element> children = element.getChildrenByName("character");
+        for(Element child : children) {
+            if(child.getAttribute("id").equals(characterName)) {
+                return new CharacterDefinition(child);
+            }
+        }
+
+        return null;
     }
 
     public static Assets get()

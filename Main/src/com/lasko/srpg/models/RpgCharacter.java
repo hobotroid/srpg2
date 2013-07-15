@@ -1,6 +1,6 @@
 package com.lasko.srpg.models;
 
-import com.badlogic.gdx.math.Vector2;
+import com.lasko.srpg.assets.Assets;
 
 public class RpgCharacter
 {
@@ -16,6 +16,8 @@ public class RpgCharacter
     public RpgCharacter(String name)
     {
         this.name = name;
+
+        CharacterDefinition def = Assets.get().getCharacterDefinition(name);
     }
 
     public final void damage(int value)

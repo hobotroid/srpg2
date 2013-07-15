@@ -12,12 +12,11 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.math.Rectangle;
-import com.lasko.srpg.Assets;
+import com.lasko.srpg.assets.Assets;
 import com.lasko.srpg.MapActor;
 import com.lasko.srpg.Srpg;
 import com.lasko.srpg.models.RpgCharacter;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -85,7 +84,7 @@ public class Map extends TiledMap
                     name = "carl";
                 }
                 RpgCharacter character = new RpgCharacter(name);
-                MapActor actor = new MapActor(character, Assets.get().getCharacter(name));
+                MapActor actor = new MapActor(character, Assets.get().getCharacterSheet(name));
                 actor.setPosition(x, y);
                 addActor(actor);
                 if(name.equals("carl")) {
