@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Pool;
 import com.lasko.srpg.map.Map;
 import com.lasko.srpg.models.RpgCharacter;
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class MapActor extends Sprite
@@ -22,11 +23,16 @@ public class MapActor extends Sprite
 
     private Rectangle collideRect = new Rectangle();
 
+    private HashMap<String, Array> animationFrames = new HashMap<String, Array>();
+    private String animationLabel = "downwalk";
+    private int animationIndex = 0;
+
     public MapActor(RpgCharacter character, Texture texture)
     {
         super(texture, 0, 0, 48, texture.getHeight());
         setOrigin(0, 0);
         this.character = character;
+        this.animationFrames = character.getFrames();
 
         collideRect.set(12, 0, this.getWidth() - 24, 5);
     }

@@ -17,19 +17,29 @@ public class CharacterDefinition
 
     private int width;
     private int height;
-    private Array<CharacterDefinitionFrame> frames = new Array<CharacterDefinitionFrame>();
+    private HashMap<String, Array> frames = new HashMap<String, Array>();
 
     public CharacterDefinition(Element xml)
     {
         this.characterName = xml.getAttribute("id");
 
         for(Element element : xml.getChildByName("frames").getChildrenByName("frame")) {
-            CharacterDefinitionFrame frame = new CharacterDefinitionFrame(
+            CharacterFrame frame = new CharacterFrame(
                     element.getAttribute("label"),
                     Integer.parseInt(element.getAttribute("index")),
                     element.getAttribute("default")
             );
-            frames.add(frame);
+            //frames.add(frame);
+            String label = frame.getLabel();
+            if(frames.get(label) == null) {
+                frames.put(label, new Array<CharacterFrame>());
+            }
+            frames.get(label).add(frame);
         }
+    }
+
+    public HashMap<String, Array> getFrames()
+    {
+        return frames;
     }
 }
