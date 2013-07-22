@@ -97,26 +97,26 @@
       <speed>1</speed>
 	  <head_y>23</head_y>
       <frames>
-         <frame index="376" label="downstill" default="downstill" />
-         <frame index="374" label="downwalk" default="downstill" />
-         <frame index="375" label="downwalk" default="downstill" />
-         <frame index="376" label="downwalk" default="downstill" />
-         <frame index="379" label="upstill" default="upstill" />
-         <frame index="377" label="upwalk" default="upstill" />
-         <frame index="378" label="upwalk" default="upstill" />
-         <frame index="379" label="upwalk" default="upstill" />
-         <frame index="384" label="rightstill" default="rightstill" />
-         <frame index="380" label="rightwalk" default="rightstill" />
-         <frame index="383" label="rightwalk" default="rightstill" />
-         <frame index="384" label="rightwalk" default="rightstill" />
-         <frame index="385" label="leftstill" default="leftstill" />
-         <frame index="381" label="leftwalk" default="leftstill" />
-         <frame index="382" label="leftwalk" default="leftstill" />
-         <frame index="385" label="leftwalk" default="leftstill" />
+         <frame index="2" label="downstill" default="downstill" />
+         <frame index="0" label="downwalk" default="downstill" />
+         <frame index="1" label="downwalk" default="downstill" />
+         <frame index="2" label="downwalk" default="downstill" />
+         <frame index="5" label="upstill" default="upstill" />
+         <frame index="3" label="upwalk" default="upstill" />
+         <frame index="4" label="upwalk" default="upstill" />
+         <frame index="5" label="upwalk" default="upstill" />
+         <frame index="10" label="rightstill" default="rightstill" />
+         <frame index="6" label="rightwalk" default="rightstill" />
+         <frame index="9" label="rightwalk" default="rightstill" />
+         <frame index="10" label="rightwalk" default="rightstill" />
+         <frame index="11" label="leftstill" default="leftstill" />
+         <frame index="7" label="leftwalk" default="leftstill" />
+         <frame index="8" label="leftwalk" default="leftstill" />
+         <frame index="11" label="leftwalk" default="leftstill" />
          
-         <frame index="376" label="standard" default="downstill" />
-         <frame index="385" label="combat" default="combat" />
-         <frame index="384" label="dead" default="dead" />
+         <frame index="2" label="standard" default="downstill" />
+         <frame index="11" label="combat" default="combat" />
+         <frame index="5" label="dead" default="dead" />
       </frames>
       <collision>
          <x>17</x>

@@ -1,19 +1,20 @@
 package com.lasko.srpg;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Pool;
 import com.lasko.srpg.map.Map;
 import com.lasko.srpg.models.CharacterFrame;
 import com.lasko.srpg.models.RpgCharacter;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map.Entry;
 
 public class MapActor extends Sprite
 {
@@ -25,21 +26,34 @@ public class MapActor extends Sprite
     private Rectangle collideRect = new Rectangle();
 
     private HashMap<String, Array> animationFrames = new HashMap<String, Array>();
-    private String animationLabel = "downwalk";
+    private String animationLabel = "downstill";
     private int animationIndex = 0;
+    private float stateTime = 0f;
+    private HashMap<String, Animation> animations = new HashMap<String, Animation>();
+    TextureRegion currentFrame;
 
     public MapActor(RpgCharacter character, Texture texture)
     {
-        super(texture, 0, 0, texture.getWidth(), texture.getHeight());
+        super(texture, 0, 0, 48, 48);
         setOrigin(0, 0);
         this.character = character;
         this.animationFrames = character.getFrames();
 
         collideRect.set(12, 0, this.getWidth() - 24, 5);
 
-        TextureRegion[][] spriteframes = TextureRegion.split(texture, texture.getWidth() / 48, 1);
-        for(CharacterFrame characterFrame : animationFrames) {
+        TextureRegion[][] spriteFrames = TextureRegion.split(texture, texture.getWidth() / (texture.getWidth() / 48), texture.getHeight() / 1);
+        Iterator it = animationFrames.entrySet().iterator();
+        while(it.hasNext()) {
+            Entry pairs = (Entry)it.next();
+            Array<CharacterFrame> frames = (Array<CharacterFrame>)pairs.getValue();
+            TextureRegion[] regions = new TextureRegion[frames.size];
+            int index = 0;
 
+            for(CharacterFrame frame : frames) {
+                regions[index++] = spriteFrames[0][frame.getIndex()];
+            }
+            Animation animation = new Animation(0.15f, regions);
+            animations.put(pairs.getKey().toString(), animation);
         }
     }
 
@@ -81,6 +95,8 @@ public class MapActor extends Sprite
     private Array<Rectangle> tiles = new Array<Rectangle>();
     public void moveUp()
     {
+        animationLabel = "upwalk";
+
         int startY, endY;
         startY = endY = (int) (getBoundingRectangle().y + collideRect.height + WALK_SPEED);
         int startX = (int) (getBoundingRectangle().x + collideRect.x);
@@ -102,6 +118,8 @@ public class MapActor extends Sprite
 
     public void moveDown()
     {
+        animationLabel = "downwalk";
+
         int startY, endY;
         startY = endY = (int) (getBoundingRectangle().y - WALK_SPEED);
         int startX = (int) (getBoundingRectangle().x + collideRect.x);
@@ -123,6 +141,8 @@ public class MapActor extends Sprite
 
     public void moveLeft()
     {
+        animationLabel = "leftwalk";
+
         int startX, endX;
         int startY = (int) (getBoundingRectangle().y);
         int endY = (int) (getBoundingRectangle().y + collideRect.height);
@@ -144,6 +164,8 @@ public class MapActor extends Sprite
 
     public void moveRight()
     {
+        animationLabel = "rightwalk";
+
         int startX, endX;
         int startY = (int) (getBoundingRectangle().y);
         int endY = (int) (getBoundingRectangle().y + collideRect.height);
@@ -161,6 +183,19 @@ public class MapActor extends Sprite
         }
 
         translateX(WALK_SPEED);
+    }
+
+    @Override
+    public void draw(SpriteBatch spriteBatch)
+    {
+        stateTime += Gdx.graphics.getDeltaTime();
+        if(animations.containsKey(animationLabel)) {
+            currentFrame = animations.get(animationLabel).getKeyFrame(stateTime, true);
+            this.setRegion(currentFrame);
+            super.draw(spriteBatch);
+        } else {
+            super.draw(spriteBatch);
+        }
     }
 
     public Rectangle getCollideRect()
