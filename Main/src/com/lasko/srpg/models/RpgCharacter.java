@@ -1,6 +1,8 @@
 package com.lasko.srpg.models;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
+import com.lasko.srpg.Srpg;
 import com.lasko.srpg.assets.Assets;
 import java.util.HashMap;
 
@@ -20,6 +22,7 @@ public class RpgCharacter
     {
         this.name = name;
 
+        Gdx.app.log(Srpg.LOG, "Initting character "+name);
         CharacterDefinition def = Assets.get().getCharacterDefinition(name);
         this.animationFrames = def.getFrames();
     }
