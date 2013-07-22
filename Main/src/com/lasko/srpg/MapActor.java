@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import com.lasko.srpg.map.Map;
+import com.lasko.srpg.models.CharacterFrame;
 import com.lasko.srpg.models.RpgCharacter;
 
 import java.util.HashMap;
@@ -29,12 +30,17 @@ public class MapActor extends Sprite
 
     public MapActor(RpgCharacter character, Texture texture)
     {
-        super(texture, 0, 0, 48, texture.getHeight());
+        super(texture, 0, 0, texture.getWidth(), texture.getHeight());
         setOrigin(0, 0);
         this.character = character;
         this.animationFrames = character.getFrames();
 
         collideRect.set(12, 0, this.getWidth() - 24, 5);
+
+        TextureRegion[][] spriteframes = TextureRegion.split(texture, texture.getWidth() / 48, 1);
+        for(CharacterFrame characterFrame : animationFrames) {
+
+        }
     }
 
     public MapActor(TextureRegion textureRegion)

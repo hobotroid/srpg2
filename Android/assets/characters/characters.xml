@@ -85,9 +85,9 @@
    </character>
    
    <!-- townspeople -->
-   <character id="townsman">
-      <full_name>Townsman</full_name>
-      <type>townsman</type>
+   <character id="citizen">
+      <full_name>Citizen</full_name>
+      <type>citizen</type>
 	  <width>48</width>
       <height>48</height>
       <hp>100</hp>
