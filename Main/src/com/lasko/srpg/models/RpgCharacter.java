@@ -15,6 +15,8 @@ public class RpgCharacter
     private int mp;
     private int maxMp;
     private int speed;
+    private int width;
+    private int height;
 
     private HashMap<String, Array> animationFrames = new HashMap<String, Array>();
 
@@ -25,6 +27,8 @@ public class RpgCharacter
         Gdx.app.log(Srpg.LOG, "Initting character "+name);
         CharacterDefinition def = Assets.get().getCharacterDefinition(name);
         this.animationFrames = def.getFrames();
+        this.width = def.getWidth();
+        this.height = def.getHeight();
     }
 
     public final void damage(int value)
@@ -55,5 +59,15 @@ public class RpgCharacter
     public HashMap<String, Array> getFrames()
     {
         return animationFrames;
+    }
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public int getHeight()
+    {
+        return height;
     }
 }

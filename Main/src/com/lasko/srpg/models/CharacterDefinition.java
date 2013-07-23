@@ -22,6 +22,8 @@ public class CharacterDefinition
     public CharacterDefinition(Element xml)
     {
         this.characterName = xml.getAttribute("id");
+        this.width = Integer.parseInt(xml.get("width"));
+        this.height = Integer.parseInt(xml.get("height"));
 
         for(Element element : xml.getChildByName("frames").getChildrenByName("frame")) {
             CharacterFrame frame = new CharacterFrame(
@@ -41,5 +43,15 @@ public class CharacterDefinition
     public HashMap<String, Array> getFrames()
     {
         return frames;
+    }
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public int getHeight()
+    {
+        return height;
     }
 }

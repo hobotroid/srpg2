@@ -34,14 +34,14 @@ public class MapActor extends Sprite
 
     public MapActor(RpgCharacter character, Texture texture)
     {
-        super(texture, 0, 0, 48, 48);
+        super(texture, 0, 0, character.getWidth(), character.getHeight());
         setOrigin(0, 0);
         this.character = character;
         this.animationFrames = character.getFrames();
 
         collideRect.set(12, 0, this.getWidth() - 24, 5);
 
-        TextureRegion[][] spriteFrames = TextureRegion.split(texture, texture.getWidth() / (texture.getWidth() / 48), texture.getHeight() / 1);
+        TextureRegion[][] spriteFrames = TextureRegion.split(texture, texture.getWidth() / (texture.getWidth() / character.getWidth()), texture.getHeight() / 1);
         Iterator it = animationFrames.entrySet().iterator();
         while(it.hasNext()) {
             Entry pairs = (Entry)it.next();
