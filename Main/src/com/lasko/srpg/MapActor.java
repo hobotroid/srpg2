@@ -30,7 +30,9 @@ public class MapActor extends Sprite
     private int animationIndex = 0;
     private float stateTime = 0f;
     private HashMap<String, Animation> animations = new HashMap<String, Animation>();
-    TextureRegion currentFrame;
+    private TextureRegion currentFrame;
+
+    private float moveTimer;
 
     public MapActor(RpgCharacter character, Texture texture)
     {
@@ -113,6 +115,7 @@ public class MapActor extends Sprite
             }
         }
 
+        moveTimer = .1f;
         translateY(WALK_SPEED);
     }
 
@@ -136,6 +139,7 @@ public class MapActor extends Sprite
             }
         }
 
+        moveTimer = .1f;
         translateY(-WALK_SPEED);
     }
 
@@ -159,6 +163,7 @@ public class MapActor extends Sprite
             }
         }
 
+        moveTimer = .1f;
         translateX(-WALK_SPEED);
     }
 
@@ -182,6 +187,7 @@ public class MapActor extends Sprite
             }
         }
 
+        moveTimer = .1f;
         translateX(WALK_SPEED);
     }
 
@@ -189,6 +195,15 @@ public class MapActor extends Sprite
     public void draw(SpriteBatch spriteBatch)
     {
         stateTime += Gdx.graphics.getDeltaTime();
+        if(moveTimer > 0) {
+            moveTimer -= stateTime;
+        } else {
+            //animationLabel = ((CharacterFrame)((Array)animationFrames.get(animationLabel)).get(0)).getDefaultFrame();
+            System.out.println("label:" + animationLabel);
+            currentFrame = animations.get(animationLabel).getKeyFrame(stateTime, true);
+            moveTimer = 0;
+        }
+
         if(animations.containsKey(animationLabel)) {
             currentFrame = animations.get(animationLabel).getKeyFrame(stateTime, true);
             this.setRegion(currentFrame);
